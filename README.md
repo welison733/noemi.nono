@@ -141,68 +141,16 @@
              background-color: #f44336; /* Vermelho para erro */
          }
 
-         #imageHistory {
-             margin-top: 30px;
-             width: 100%;
-             max-width: 900px;
-             background-color: #f8fafc;
-             border-radius: 15px;
-             padding: 20px;
-             box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
-         }
-         #imageHistory h2 {
-             font-size: 1.8rem;
-             color: #4a5568;
-             margin-bottom: 15px;
-             text-align: center;
-         }
-         #historyList {
-             display: flex;
-             flex-wrap: wrap;
-             gap: 15px;
-             justify-content: center;
-         }
-         .history-item {
-             width: 120px;
-             height: 90px;
-             border: 2px solid #e2e8f0;
-             border-radius: 8px;
-             overflow: hidden;
-             cursor: pointer;
-             transition: all 0.2s ease-in-out;
-             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
-             position: relative;
-         }
-         .history-item:hover {
-             transform: translateY(-2px) scale(1.05);
-             box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
-             border-color: #63b3ed;
-         }
-         .history-item img {
-             width: 100%;
-             height: 100%;
-             object-fit: cover;
-             display: block;
-         }
-         .history-item .overlay {
-             position: absolute;
-             top: 0;
-             left: 0;
-             width: 100%;
-             height: 100%;
-             background-color: rgba(0, 0, 0, 0.5);
-             color: white;
-             display: flex;
-             justify-content: center;
-             align-items: center;
-             font-size: 0.8em;
-             text-align: center;
-             opacity: 0;
-             transition: opacity 0.2s ease-in-out;
-         }
-         .history-item:hover .overlay {
-             opacity: 1;
-         }
+         /* Removed image history section styling */
+         /* #imageHistory { ... } */
+         /* #imageHistory h2 { ... } */
+         /* #historyList { ... } */
+         /* .history-item { ... } */
+         /* .history-item:hover { ... } */
+         /* .history-item img { ... } */
+         /* .history-item .overlay { ... } */
+         /* .history-item:hover .overlay { ... } */
+
          #userIdDisplay {
              margin-top: 20px;
              font-size: 0.9em;
@@ -264,16 +212,10 @@
                  align-items: stretch;
                  gap: 10px;
              }
-             #imageHistory {
-                 padding: 15px;
-             }
-             #imageHistory h2 {
-                 font-size: 1.5rem;
-             }
-             .history-item {
-                 width: 100px;
-                 height: 75px;
-             }
+             /* Removed image history section styling for mobile */
+             /* #imageHistory { ... } */
+             /* #imageHistory h2 { ... } */
+             /* .history-item { ... } */
              #timerDisplay {
                 font-size: 1.4rem;
                 padding: 8px;
@@ -312,18 +254,18 @@
          <canvas id="canvas"></canvas>
          <canvas id="previewCanvas"></canvas>
 
-         <div id="imageHistory">
+         <!-- <div id="imageHistory">
              <h2>Imagens Recentes</h2>
              <div id="historyList">
                  </div>
+         </div> -->
          </div>
-         <div id="userIdDisplay" class="text-gray-600 mt-4"></div>
-     </div>
 
      <script type="module">
-         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-         import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+         // Removed Firebase imports
+         // import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+         // import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+         // import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
          const canvas = document.getElementById('canvas');
          const ctx = canvas.getContext('2d');
@@ -336,8 +278,9 @@
          const colsInput = document.getElementById('colsInput');
          const timeInput = document.getElementById('timeInput'); // New time input
          const startGameBtn = document.getElementById('startGameBtn');
-         const historyList = document.getElementById('historyList');
-         const userIdDisplay = document.getElementById('userIdDisplay');
+         // Removed historyList and userIdDisplay
+         // const historyList = document.getElementById('historyList');
+         // const userIdDisplay = document.getElementById('userIdDisplay');
          const timerDisplay = document.getElementById('timerDisplay');
 
          let puzzleImage = null; // A imagem carregada para o quebra-cabeça
@@ -367,16 +310,16 @@
          let timeRemaining = 0; // Tempo em segundos
          let gameActive = false; // Estado do jogo (ativo para interação)
 
-         // Firebase Initialization
-         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-         const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
-         const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+         // Removed Firebase Initialization
+         // const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+         // const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+         // const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
 
-         const app = initializeApp(firebaseConfig);
-         const db = getFirestore(app);
-         const auth = getAuth(app);
+         // const app = initializeApp(firebaseConfig);
+         // const db = getFirestore(app);
+         // const auth = getAuth(app);
 
-         let currentUserId = null;
+         // let currentUserId = null; // No longer needed
 
          // Function to display messages on the screen (success/error)
          function showMessage(message, type = 'success') {
@@ -444,16 +387,13 @@
          window.addEventListener('resize', resizeCanvas);
 
          // Function to load an image
-         function loadImage(src, fromHistory = false) {
+         function loadImage(src) { // Removed fromHistory parameter
              return new Promise((resolve, reject) => {
                  const img = new Image();
                  img.crossOrigin = 'Anonymous'; // Important to avoid CORS issues
                  img.onload = () => {
                      puzzleImage = img;
-                     if (!fromHistory) { // Only show success message and save to history if not loaded from history
-                         showMessage('Imagem carregada com sucesso!', 'success');
-                         saveImageToHistory(src);
-                     }
+                     showMessage('Imagem carregada com sucesso!', 'success');
                      // Clear the canvas and draw the full image for visualization
                      ctx.clearRect(0, 0, canvas.width, canvas.height);
                      drawFullImage(img);
@@ -947,81 +887,10 @@
              }
          }
 
-         // --- Firebase Logic ---
-         // Listen for authentication state changes
-         onAuthStateChanged(auth, async (user) => {
-             if (user) {
-                 currentUserId = user.uid;
-                 console.log("Usuário autenticado:", currentUserId);
-                 userIdDisplay.textContent = `ID do Usuário: ${currentUserId}`;
-                 // Now that we have a user, load the image history
-                 loadImageHistory();
-             } else {
-                 try {
-                     if (initialAuthToken) {
-                         await signInWithCustomToken(auth, initialAuthToken);
-                     } else {
-                         await signInAnonymously(auth);
-                     }
-                 } catch (error) {
-                     console.error("Erro ao autenticar no Firebase:", error);
-                     // Fallback if anonymous sign-in also fails (e.g., no internet)
-                     currentUserId = crypto.randomUUID(); // Use a random ID if auth fails
-                     userIdDisplay.textContent = `ID do Usuário (offline): ${currentUserId}`;
-                     showMessage('Erro ao conectar ao Firebase. Histórico de imagens pode não ser salvo.', 'error');
-                 }
-             }
-         });
-
-         // Function to save image URL/dataURL to Firestore
-         async function saveImageToHistory(imageUrl) {
-             if (!currentUserId) {
-                 console.warn("Usuário não autenticado. Não é possível salvar o histórico de imagens.");
-                 return;
-             }
-             try {
-                 const imageHistoryRef = collection(db, `artifacts/${appId}/users/${currentUserId}/imageHistory`);
-                 await addDoc(imageHistoryRef, {
-                     imageUrl: imageUrl,
-                     timestamp: serverTimestamp() // Use serverTimestamp for consistent time
-                 });
-                 console.log("Imagem salva no histórico com sucesso!");
-             } catch (e) {
-                 console.error("Erro ao adicionar documento: ", e);
-                 showMessage('Erro ao salvar imagem no histórico.', 'error');
-             }
-         }
-
-         // Function to load image history from Firestore
-         function loadImageHistory() {
-             if (!currentUserId) {
-                 console.warn("Usuário não autenticado. Não é possível carregar o histórico de imagens.");
-                 return;
-             }
-
-             const imageHistoryRef = collection(db, `artifacts/${appId}/users/${currentUserId}/imageHistory`);
-             const q = query(imageHistoryRef, orderBy("timestamp", "desc")); // Order by most recent
-
-             onSnapshot(q, (snapshot) => {
-                 historyList.innerHTML = ''; // Clear current history list
-                 snapshot.forEach((doc) => {
-                     const imageData = doc.data();
-                     const imageUrl = imageData.imageUrl;
-
-                     const historyItem = document.createElement('div');
-                     historyItem.className = 'history-item';
-                     historyItem.innerHTML = `<img src="${imageUrl}" alt="Imagem do Histórico" onerror="this.src='https://placehold.co/120x90/cccccc/333333?text=Erro'">
-                                              <div class="overlay">Carregar</div>`;
-                     historyItem.addEventListener('click', () => {
-                         loadImage(imageUrl, true).catch(error => console.error("Erro ao carregar imagem do histórico:", error)); // Add catch here too
-                     });
-                     historyList.appendChild(historyItem);
-                 });
-             }, (error) => {
-                 console.error("Erro ao carregar histórico de imagens: ", error);
-                 showMessage('Erro ao carregar histórico de imagens.', 'error');
-             });
-         }
+         // Removed all Firebase related logic
+         // onAuthStateChanged(auth, async (user) => { ... });
+         // async function saveImageToHistory(imageUrl) { ... }
+         // function loadImageHistory() { ... }
      </script>
  </body>
  </html>
